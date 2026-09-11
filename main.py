@@ -19,6 +19,11 @@ def loadImgData(im):
 
     pixels = []
 
+    max_width = 525
+    max_height = 350
+
+    img.thumbnail((max_width, max_height))
+
     for y in range(img.height):
         row = []
 
@@ -31,6 +36,7 @@ def loadImgData(im):
     # print("Rows: ", len(pixels))
     # print("Columns: ", len(pixels[0]))
     print("Successfully loaded pixel data!")
+    # print(pixels)
     return pixels
 
 def buildBrightnessMatrix():
@@ -48,6 +54,7 @@ def buildBrightnessMatrix():
         brightness.append(brightness_row)
 
     print("Successfully constructed brightness matrix!")
+    # print(brightness)
     return brightness
 
 def brightnessToAscii():
@@ -70,8 +77,24 @@ def brightnessToAscii():
             ascii_row.append(asciichar)
         asciiMatrix.append(ascii_row)
     print("Successfully constructed ASCII matrix!")
+    # print(asciiMatrix)
     return asciiMatrix
 
+def printAscii():
+    imgMatrix = brightnessToAscii()
+
+    for row in imgMatrix:
+        ascii_row = []
+        for pixel in row:
+            pixel = pixel * 3
+            ascii_row.append(pixel)
+        ascii_group = "".join(ascii_row)
+        print(ascii_group)
+    
+    return imgMatrix
+
 readImg(image)
-buildBrightnessMatrix()
-brightnessToAscii()
+# loadImgData(image)
+# buildBrightnessMatrix()
+# brightnessToAscii()
+printAscii()
