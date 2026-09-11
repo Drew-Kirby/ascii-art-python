@@ -28,8 +28,27 @@ def loadImgData(im):
 
         pixels.append(row)
 
-    print("Rows: ", len(pixels))
-    print("Columns: ", len(pixels[0]))
+    # print("Rows: ", len(pixels))
+    # print("Columns: ", len(pixels[0]))
+    print("Successfully loaded pixel data!")
+    return pixels
 
-loadImgData(image)
+def buildBrightnessMatrix():
+    brightness = []
+
+    pixel_matrix = loadImgData(image)
+
+    for pixel_row in pixel_matrix:
+        brightness_row = []
+
+        for pixel in pixel_row:
+            calc = (pixel[0] + pixel[1] + pixel[2]) / 3
+            calc = round(calc)
+            brightness_row.append(calc)
+        brightness.append(brightness_row)
+
+    print("Successfully constructed brightness matrix!")
+    return brightness
+
 readImg(image)
+buildBrightnessMatrix()
