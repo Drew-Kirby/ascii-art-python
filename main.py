@@ -50,5 +50,28 @@ def buildBrightnessMatrix():
     print("Successfully constructed brightness matrix!")
     return brightness
 
+def brightnessToAscii():
+    asciiStr = '`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$'
+
+    # 0 to 255
+    # brightness of 50 is 50 / 255 = b
+    # b x len(asciiStr)-1 = i character
+
+    asciiMatrix = []
+    brightnessMatrix = buildBrightnessMatrix()
+
+    for pixel_row in brightnessMatrix:
+        ascii_row = []
+        for pixel in pixel_row:
+            b = (pixel / 255)
+            char = (b * (len(asciiStr)-1))
+            char = round(char)
+            asciichar = asciiStr[char]
+            ascii_row.append(asciichar)
+        asciiMatrix.append(ascii_row)
+    print("Successfully constructed ASCII matrix!")
+    return asciiMatrix
+
 readImg(image)
 buildBrightnessMatrix()
+brightnessToAscii()
