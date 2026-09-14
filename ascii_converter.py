@@ -19,10 +19,11 @@ def loadImgData(im):
 
     pixels = []
 
-    max_width = 525
-    max_height = 350
+    max_width = 225 # 525
+    max_height = 150 # 350
 
     img.thumbnail((max_width, max_height))
+    print("Actual ASCII image size:", img.width, "x", img.height)
 
     for y in range(img.height):
         row = []
