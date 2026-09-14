@@ -4,6 +4,7 @@ from PIL import UnidentifiedImageError
 from ascii_converter import generateAscii
 
 app = Flask(__name__)
+app.config["MAX_CONTENT_LENGTH"] = 10 * 1024 * 1024
 
 @app.route('/', methods=["GET", "POST"])
 def hello():
