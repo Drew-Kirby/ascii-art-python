@@ -83,15 +83,19 @@ def brightnessToAscii():
 def printAscii():
     imgMatrix = brightnessToAscii()
 
+    asciiOut = []
+
     for row in imgMatrix:
         ascii_row = []
         for pixel in row:
             pixel = pixel * 3
             ascii_row.append(pixel)
         ascii_group = "".join(ascii_row)
+        asciiOut.append(ascii_group)
         print(ascii_group)
-    
-    return imgMatrix
+
+    asciiOut = "\n".join(asciiOut)
+    return asciiOut
 
 readImg(image)
 # loadImgData(image)
