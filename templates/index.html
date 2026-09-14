@@ -7,9 +7,30 @@
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
-    <h1>Image to ASCII converter</h1>
-    <div class="ascii-box">
-        <pre class="ascii-art">{{ output }}</pre>
-    </div>
+    <h1>Image to ASCII Converter</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        <label for="image">Upload an image:</label>
+
+        <input
+            type="file"
+            id="image"
+            name="image"
+            accept=".jpg,.jpeg,.png,.webp"
+            required
+        >
+
+        <button type="submit">Convert</button>
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if output %}
+        <div class="ascii-box">
+            <pre class="ascii-art">{{ output }}</pre>
+        </div>
+    {% endif %}
 </body>
 </html>
