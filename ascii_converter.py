@@ -1,6 +1,6 @@
 from PIL import Image
 
-image = ("ascii-pineapple.jpg")
+# image = ("ascii-pineapple.jpg")
 
 def readImg(im):
     img = Image.open(im)
@@ -35,14 +35,14 @@ def loadImgData(im):
 
     # print("Rows: ", len(pixels))
     # print("Columns: ", len(pixels[0]))
-    print("Successfully loaded pixel data!")
+    # print("Successfully loaded pixel data!")
     # print(pixels)
     return pixels
 
-def buildBrightnessMatrix():
+def buildBrightnessMatrix(im):
     brightness = []
 
-    pixel_matrix = loadImgData(image)
+    pixel_matrix = loadImgData(im)
 
     for pixel_row in pixel_matrix:
         brightness_row = []
@@ -53,11 +53,11 @@ def buildBrightnessMatrix():
             brightness_row.append(calc)
         brightness.append(brightness_row)
 
-    print("Successfully constructed brightness matrix!")
+    # print("Successfully constructed brightness matrix!")
     # print(brightness)
     return brightness
 
-def brightnessToAscii():
+def brightnessToAscii(im):
     asciiStr = '`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$'
 
     # 0 to 255
@@ -65,7 +65,7 @@ def brightnessToAscii():
     # b x len(asciiStr)-1 = i character
 
     asciiMatrix = []
-    brightnessMatrix = buildBrightnessMatrix()
+    brightnessMatrix = buildBrightnessMatrix(im)
 
     for pixel_row in brightnessMatrix:
         ascii_row = []
@@ -76,12 +76,12 @@ def brightnessToAscii():
             asciichar = asciiStr[char]
             ascii_row.append(asciichar)
         asciiMatrix.append(ascii_row)
-    print("Successfully constructed ASCII matrix!")
+    # print("Successfully constructed ASCII matrix!")
     # print(asciiMatrix)
     return asciiMatrix
 
-def printAscii():
-    imgMatrix = brightnessToAscii()
+def generateAscii(im):
+    imgMatrix = brightnessToAscii(im)
 
     asciiOut = []
 
@@ -92,13 +92,16 @@ def printAscii():
             ascii_row.append(pixel)
         ascii_group = "".join(ascii_row)
         asciiOut.append(ascii_group)
-        print(ascii_group)
+        # print(ascii_group)
 
     asciiOut = "\n".join(asciiOut)
     return asciiOut
 
-readImg(image)
+# readImg(image)
 # loadImgData(image)
-# buildBrightnessMatrix()
-# brightnessToAscii()
-printAscii()
+# buildBrightnessMatrix(image)
+# brightnessToAscii(image)
+# printAscii(image)
+
+# ascii_art = generateAscii("ascii-pineapple.jpg")
+# print(ascii_art)
