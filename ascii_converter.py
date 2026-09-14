@@ -19,8 +19,8 @@ def loadImgData(im):
 
     pixels = []
 
-    max_width = 225 # 525
-    max_height = 150 # 350
+    max_width = 288 # 525
+    max_height = 162 # 350
 
     img.thumbnail((max_width, max_height))
     print("Actual ASCII image size:", img.width, "x", img.height)
@@ -89,7 +89,7 @@ def generateAscii(im):
     for row in imgMatrix:
         ascii_row = []
         for pixel in row:
-            pixel = pixel * 3
+            pixel = pixel * 2
             ascii_row.append(pixel)
         ascii_group = "".join(ascii_row)
         asciiOut.append(ascii_group)
